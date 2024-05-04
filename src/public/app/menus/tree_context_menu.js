@@ -93,6 +93,15 @@ export default class TreeContextMenu {
             { title: "----" },
             { title: "Export", command: "exportNote", uiIcon: "bx bx-empty",
                 enabled: notSearch && noSelectedNotes },
+
+
+                { title: "Flatten Note", command: "flattenNote", uiIcon: "bx bx-empty",
+                enabled: notSearch && noSelectedNotes },
+                { title: "Duplicate Note", command: "duplicateNote", uiIcon: "bx bx-empty",
+                enabled: notSearch && noSelectedNotes },
+       
+
+
             { title: "Import into note", command: "importIntoNote", uiIcon: "bx bx-empty",
                 enabled: notSearch && noSelectedNotes },
             { title: "Apply bulk actions", command: "openBulkActionsDialog", uiIcon: "bx bx-list-plus",

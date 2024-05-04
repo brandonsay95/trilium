@@ -1582,6 +1582,16 @@ export default class NoteTreeWidget extends NoteContextAwareWidget {
         this.triggerCommand("showExportDialog", {notePath, defaultType: "subtree"});
     }
 
+    async flattenNoteCommand({node}){
+        console.log('testing flatten note',node);
+    }
+
+
+    
+    async duplicateNoteCommand({node}){
+        console.log('testing duplicate note',node);
+    }
+
     async importIntoNoteCommand({node}) {
         this.triggerCommand("showImportDialog", {noteId: node.data.noteId});
     }
