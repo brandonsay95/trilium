@@ -1589,8 +1589,24 @@ export default class NoteTreeWidget extends NoteContextAwareWidget {
 
     
     async duplicateNoteCommand({node}){
-        console.log('testing duplicate note',node);
+
+        
+        const nodesToDuplicate = this.getSelectedOrActiveNodes(node);
+
+        for (const nodeToDuplicate of nodesToDuplicate) {
+            const note = froca.getNoteFromCache(nodeToDuplicate.data.noteId);
+
+            if (note.isProtected && !protectedSessionHolder.isProtectedSessionAvailable()) {
+                continue;
+            }
+
+            const branch = froca.getBranch(nodeToDuplicate.data.branchId);
+
+            noteCreateService.duplicateSubtree(nodeToDuplicate.data.noteId, branch.parentNoteId);
+        
     }
+    console.log(node,nodesToDuplicate);
+}
 
     async importIntoNoteCommand({node}) {
         this.triggerCommand("showImportDialog", {noteId: node.data.noteId});
